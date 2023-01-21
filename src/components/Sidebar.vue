@@ -2,6 +2,7 @@
 import LogoIcon from "../icons/LogoIcon.vue";
 import SidebarNav from "../components/SidebarNav.vue";
 import SidebarFavorites from "../components/SidebarFavorites.vue";
+import UserCard from "./UserCard.vue";
 </script>
 
 <template>
@@ -9,6 +10,11 @@ import SidebarFavorites from "../components/SidebarFavorites.vue";
     <h1 className="sidebar-logo"><LogoIcon /> Payte</h1>
     <SidebarNav />
     <SidebarFavorites />
+    <UserCard
+      :full-name="'Marc Webber'"
+      :email="'marc@riot.com'"
+      :image-name="'portret.jpg'"
+    />
   </aside>
 </template>
 
@@ -18,6 +24,8 @@ import SidebarFavorites from "../components/SidebarFavorites.vue";
     background-color: #f7f7f9;
     width: 15%;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
   }
 
   &-logo {
