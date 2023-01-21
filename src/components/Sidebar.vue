@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import LogoIcon from "../icons/LogoIcon.vue";
-import SideBarNav from "../components/SidebarNav.vue";
+import SidebarNav from "../components/SidebarNav.vue";
+import SidebarFavorites from "../components/SidebarFavorites.vue";
 </script>
 
 <template>
   <aside className="sidebar-container">
     <h1 className="sidebar-logo"><LogoIcon /> Payte</h1>
-    <SideBarNav />
+    <SidebarNav />
+    <SidebarFavorites />
   </aside>
 </template>
 
