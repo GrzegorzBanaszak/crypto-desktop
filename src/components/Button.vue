@@ -28,6 +28,7 @@ const buttonType = props.variant?.variant;
   &-white {
     color: #7445fb;
     background-color: white;
+    border: 1px solid #ebebf3;
   }
 }
 </style>

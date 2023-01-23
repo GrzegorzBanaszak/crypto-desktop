@@ -1,12 +1,86 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import axios from "axios";
+import Tab from "./Tab.vue";
+import { ref } from "vue";
+import TabsSummary from "./TabsSummary.vue";
 
-<template><div className="main-tabs">Tabs</div></template>
+// try {
+//   const res = await axios.get("/api/v1/cryptocurrency/map", {
+//     headers: {
+//       "X-CMC_PRO_API_KEY": import.meta.env.VITE_ACCESS_TOKEN,
+//       "Content-Type": "application/json;charset=UTF-8",
+//       "Access-Control-Allow-Origin": "*",
+//     },
+//     withCredentials: false,
+//   });
+//   console.log(res.data);
+// } catch (error) {
+//   console.log(error);
+// }
+
+const selected = ref<string>("Summary");
+const changeSelected = (select: string): void => {
+  selected.value = select;
+};
+</script>
+
+<template>
+  <div className="main-tabs">
+    <div className="main-tabs__header">
+      <Tab
+        text="Summary"
+        :isSelect="selected === 'Summary'"
+        @tabClick="changeSelected('Summary')"
+      />
+      <Tab
+        text="Table"
+        :isSelect="selected === 'Table'"
+        @tabClick="changeSelected('Table')"
+      />
+      <Tab
+        text="Charts"
+        :isSelect="selected === 'Charts'"
+        @tabClick="changeSelected('Charts')"
+      />
+      <Tab
+        text="Reporting"
+        :isSelect="selected === 'Reporting'"
+        @tabClick="changeSelected('Reporting')"
+      />
+      <Tab
+        text="Analysis"
+        :isSelect="selected === 'Analysis'"
+        @tabClick="changeSelected('Analysis')"
+      />
+    </div>
+    <div className="main-tabs__body">
+      <TabsSummary v-if="selected === 'Summary'" />
+      <div v-else-if="selected === 'Table'">Table</div>
+      <div v-else-if="selected === 'Charts'">Charts</div>
+      <div v-else-if="selected === 'Reporting'">Reporting</div>
+      <div v-else-if="selected === 'Analysis'">Analysis</div>
+      <div v-else>Error</div>
+    </div>
+  </div>
+</template>
 
 <style lang="scss">
 .main {
   &-tabs {
     grid-area: tabs;
     background-color: #f7f7f9;
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    &__header {
+      display: flex;
+      gap: 1rem;
+      border-bottom: 1px solid #ebebf3;
+    }
+    &__body {
+      padding-top: 1rem;
+    }
   }
 }
 </style>

@@ -10,7 +10,10 @@ import ContentTabs from "./ContentTabs.vue";
     <ContentNav />
     <ContentBalance />
     <ContentSummery />
-    <ContentTabs />
+    <Suspense>
+      <ContentTabs />
+      <template #fallback> Loading... </template>
+    </Suspense>
   </main>
 </template>
 
