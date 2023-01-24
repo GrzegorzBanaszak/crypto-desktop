@@ -12,7 +12,7 @@ export default defineConfig({
       "/api": {
         target: "https://pro-api.coinmarketcap.com/",
         changeOrigin: true,
-        secure: false,
+
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
