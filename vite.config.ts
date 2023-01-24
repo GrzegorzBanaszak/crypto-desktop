@@ -10,7 +10,7 @@ export default defineConfig({
     open: true,
     proxy: {
       "/api": {
-        target: "https://pro-api.coinmarketcap.com",
+        target: "https://pro-api.coinmarketcap.com/.netlify/functions",
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ""),
