@@ -1,22 +1,7 @@
 <script setup lang="ts">
-import axios from "axios";
 import Tab from "./Tab.vue";
 import { ref } from "vue";
 import TabsSummary from "./TabsSummary.vue";
-
-// try {
-//   const res = await axios.get("/api/v1/cryptocurrency/map", {
-//     headers: {
-//       "X-CMC_PRO_API_KEY": import.meta.env.VITE_ACCESS_TOKEN,
-//       "Content-Type": "application/json;charset=UTF-8",
-//       "Access-Control-Allow-Origin": "*",
-//     },
-//     withCredentials: false,
-//   });
-//   console.log(res.data);
-// } catch (error) {
-//   console.log(error);
-// }
 
 const selected = ref<string>("Summary");
 const changeSelected = (select: string): void => {
@@ -54,7 +39,10 @@ const changeSelected = (select: string): void => {
       />
     </div>
     <div className="main-tabs__body">
-      <TabsSummary v-if="selected === 'Summary'" />
+      <Suspense v-if="selected === 'Summary'">
+        <TabsSummary />
+        <template #fallback> Loading... </template>
+      </Suspense>
       <div v-else-if="selected === 'Table'">Table</div>
       <div v-else-if="selected === 'Charts'">Charts</div>
       <div v-else-if="selected === 'Reporting'">Reporting</div>

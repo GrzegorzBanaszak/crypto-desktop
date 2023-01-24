@@ -43,6 +43,9 @@ const chartData = {
 };
 
 const config = {
+  animation: {
+    duration: 0,
+  },
   scales: {
     x: {
       display: false,
