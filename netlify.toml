@@ -1,5 +1,7 @@
-# The following redirect is intended for use with most SPA's that handles routing internally.
 [[redirects]]
-  from = "/api/_"
+  from = "/api"
   to = "https://pro-api.coinmarketcap.com"
   status = 200
+  force = true # COMMENT: ensure that we always redirect
+  headers = {X-From = "Netlify"}
+  signed = "VITE_ACCESS_TOKEN"
